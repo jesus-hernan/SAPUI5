@@ -1,0 +1,74 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	controllerName="logali.group.MyFirstProject.controller.detailOrder" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:cc="logali.group.MyFirstProject.customControls">
+	<App>
+		<pages>
+			<Page>
+				<customHeader>
+						<Bar>
+							<contentLeft>
+								<Button icon="sap-icon://nav-back" press="onBack"></Button>
+							</contentLeft>
+							<contentMiddle>
+								<Title text="{i18n>orden} {odataModel>OrderID}"></Title>
+							</contentMiddle>
+						</Bar>
+				</customHeader>
+				<content>
+					<Panel headerText="{i18n>cabecera}">
+						<l:Grid defaultSpan="L6 M6 S12">
+							<f:Form editable="false">
+								<f:layout>
+									<f:ResponsiveGridLayout
+										labelSpanL="6"
+										labelSpanM="6"
+										labelSpanS="12"/>
+								</f:layout>
+								<f:formContainers>
+									<f:FormContainer>
+										<f:formElements>
+											<f:FormElement label="{i18n>fecha}">
+												<f:fields>
+													<Text text="{path:'odataModel>OrderDate',type:'sap.ui.model.odata.type.Date'}"></Text>
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>mercancia}">
+												<f:fields>
+													<Text text="{odataModel>Freight}"></Text>
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>nombre}">
+												<f:fields>
+													<Text text="{odataModel>ShipName}"></Text>
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>direccion}">
+												<f:fields>
+													<Text text="{odataModel>ShipAddress}, {odataModel>ShipCity}, {odataModel>ShipCountry}"></Text>
+												</f:fields>
+											</f:FormElement>
+										</f:formElements>
+									</f:FormContainer>
+								</f:formContainers>
+							</f:Form>
+							<FlexBox class="sapUiTinyMarginTop">
+								<cc:Signature id="signature"></cc:Signature>
+								<Button text="{i18n>limpiar}" press="onClear" class="sapUiTinyMarginBegin"></Button>
+							</FlexBox>
+						</l:Grid>
+					</Panel>
+					<Panel headerText="{i18n>detalle}">
+						<List items="{path:'odataModel>Order_Details' , parameters:{expand : 'Product'},factory:'.factoryOrderDetail'}">
+						</List>
+					</Panel>
+				</content>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer></ToolbarSpacer>
+						<Button text="{i18n>guardar}" press="onSave"></Button>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

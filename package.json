@@ -1,0 +1,25 @@
+{
+  "name": "MyFirstProject",
+  "version": "0.0.1",
+  "devDependencies": {
+    "@sap/ui5-builder-webide-extension": "1.0.x",
+    "@sapui5/ts-types": "^1.71.15",
+    "@ui5/cli": "2.2.6",
+    "bestzip": "2.1.4",
+    "rimraf": "3.0.2"
+  },
+  "scripts": {
+    "build": "npm run clean && ui5 build --include-task=generateManifestBundle generateCachebusterInfo && npm run zip",
+    "zip": "cd dist && npx bestzip ../MyFirstProject-content.zip *",
+    "clean": "npx rimraf MyFirstProject-content.zip dist"
+  },
+  "ui5": {
+    "dependencies": [
+      "@sap/ui5-builder-webide-extension"
+    ]
+  },
+  "dependencies": {
+    "@sap/approuter": "^8.5.4",
+    "@sap/html5-repo-mock": "^1.6.0"
+  }
+}

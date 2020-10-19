@@ -1,0 +1,162 @@
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "logali.group.MyFirstProject",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "ach": "ach",
+        "sourceTemplate": {
+            "id": "html5moduletemplates.basicSAPUI5ApplicationProjectModule",
+            "version": "1.40.12"
+        },
+        "dataSources": {
+            "Northwind.svc": {
+                "uri": "northwind/V2/Northwind/Northwind.svc/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "YSAPUI5_SRV_01": {
+                "uri": "/sap/opu/odata/sap/YSAPUI5_SRV_01/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/YSAPUI5_SRV_01/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "logali.group.MyFirstProject.view.app",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.60.1",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "logali.group.MyFirstProject.i18n.i18n"
+                }
+            },
+            "odataModel": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "Northwind.svc",
+                "preload": true
+            },
+            "odataModelIncidence": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request",
+                    "useBatch": false,
+                    "defaultUpdateMethod": "Put"
+                },
+                "dataSource": "YSAPUI5_SRV_01",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "logali.group.MyFirstProject.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteMain",
+                    "pattern": "",
+                    "target": [
+                        "main"
+                    ]
+                },
+                {
+                    "name": "detailOrder",
+                    "pattern": "detailOrder/{OrderID}",
+                    "target": [
+                        "detailOrder"
+                    ]
+                }
+            ],
+            "targets": {
+                "masterEmployee": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "masterEmployees",
+                    "viewName": "masterEmployees"
+                },
+                "main": {
+                    "viewType": "XML",
+                    "viewName": "main"
+                },
+                "detailEmployee": {
+                    "viewType": "XML",
+                    "viewName": "detailEmployee"
+                },
+                "detailOrder": {
+                    "viewType": "XML",
+                    "viewName": "detailOrder"
+                },
+                "app": {
+                    "viewType": "XML",
+                    "viewName": "app"
+                }
+            }
+        }
+    }
+}

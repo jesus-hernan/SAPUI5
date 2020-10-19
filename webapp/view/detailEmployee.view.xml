@@ -1,0 +1,80 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="logali.group.MyFirstProject.controller.detailEmployee" xmlns:html="http://www.w3.org/1999/xhtml">
+			<Page title="{i18n>detalleEmpleado}">
+				<content>
+					<Panel>
+						<FlexBox
+							height="65px"
+							alignItems="Center"
+							justifyContent="Center">
+							<items>
+								<Text text="{odataModel>Title}" class="boldText"></Text>
+							</items>
+						</FlexBox>
+						<FlexBox
+							height="65px"
+							alignItems="Start"
+							justifyContent="SpaceBetween">
+							<items>
+								<VBox>
+									<Text text="{i18n>pais}" class="boldText"></Text>
+									<Text text="{odataModel>Country}"></Text>
+								</VBox>
+								<VBox>
+									<Text text="{i18n>ciudad}" class="boldText"></Text>
+									<Text text="{odataModel>City}"></Text>
+								</VBox>
+							</items>
+						</FlexBox>
+						
+						<FlexBox
+							alignItems="Start">
+							<items>
+								<HBox>
+									<Text text="{i18n>nombre}:" class="boldText sapUiTinyMarginEnd"></Text>
+									<Text text="{odataModel>TitleOfCourtesy} {odataModel>FirstName} {odataModel>LastName}" width="100%" >
+									</Text>
+									<layoutData>
+											<FlexItemData growFactor="3" />
+									</layoutData>
+								</HBox>
+								<HBox>
+									<Text text="{i18n>telefono}:" class="boldText sapUiTinyMarginEnd"></Text>
+									<Text text="{odataModel>HomePhone}" width="100%">
+									</Text>
+									<layoutData>
+											<FlexItemData growFactor="2" />
+									</layoutData>
+								</HBox>
+								<FlexBox 
+									direction="Column"
+									alignItems="Start">
+									<Text text="{i18n>direccion}:" class="boldText sapUiTinyMarginEnd"></Text>
+									<Text text="{odataModel>Address}" width="100%" ></Text>
+									<Text text="{odataModel>Region}" width="100%" ></Text>
+									<Text text="{odataModel>PostalCode}" width="100%" ></Text>
+									<layoutData>
+											<FlexItemData growFactor="1" />
+									</layoutData>
+								</FlexBox>
+							</items>
+						</FlexBox>
+					</Panel>
+					<Panel class="sapUiSizeCompact" backgroundDesign="Transparent">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="{i18n>incidencias} {= ${odataModel>Country} !== 'USA' ? ${i18n>europa} : ${i18n>estadosUnidos}}"></Title>
+								<ToolbarSpacer></ToolbarSpacer>
+								<Button text="{i18n>crearIncidencia}" press="onCreateIncidence"></Button>
+							</Toolbar>
+						</headerToolbar>
+						<Panel id="tableIncidence" class="sapUiNoContentPadding" backgroundDesign="Transparent">
+							
+						</Panel>
+					</Panel>
+					<Panel class="sapUiSizeCompact" backgroundDesign="Transparent" headerText="{i18n>ordenes}">
+						<core:Fragment fragmentName="logali.group.MyFirstProject.fragment.tableOrder" type="XML"/>
+					</Panel>
+				</content>
+			</Page>
+</mvc:View>

@@ -1,0 +1,33 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Panel>
+		<headerToolbar>
+			<Toolbar>
+				<core:Icon src="{= ${incidenceModel>Type}==='0' ? 'accept' : ${incidenceModel>Type}==='1' ? 'alert' : ${incidenceModel>Type}==='2' ? 'decline' : '' }"></core:Icon>
+				<Title text="{i18n>incidencia} {incidenceModel>index} {path:'incidenceModel>CreationDate',formatter:'.Formatter.dateFormat'}"></Title>
+				<ToolbarSpacer></ToolbarSpacer>
+				<core:Icon src="delete" press="onDeleteIncidence"></core:Icon>
+			</Toolbar>
+		</headerToolbar>
+		<content>
+			<HBox>
+				<VBox class="sapUiSmallMarginEnd">
+					<Text text="{i18n>fecha}"></Text>
+					<DatePicker dateValue="{incidenceModel>CreationDate}" valueState="{incidenceModel>CreationDateError}" change="changeIncidenceDate"></DatePicker>
+				</VBox>
+				<VBox visible="{= ${incidenceModel>CreationDate} !== '' &amp;&amp; ${incidenceModel>CreationDate} !== undefined}" class="sapUiSmallMarginEnd">
+					<Text text="{i18n>motivo}"></Text>
+					<Input value="{incidenceModel>Reason}" valueState="{incidenceModel>ReasonError}" change="changeIncidenceReason"></Input>
+				</VBox>
+				<VBox visible="{= ${incidenceModel>CreationDate} !== '' &amp;&amp; ${incidenceModel>CreationDate} !== undefined}">
+					<Text text="{i18n>tipo}"></Text>
+					<Select selectedKey="{incidenceModel>Type}"  valueState="{incidenceModel>TypeError}" forceSelection="false" change="changeIncidenceType">
+						<core:Item key="0" text="{i18n>correcta}"></core:Item>
+						<core:Item key="1" text="{i18n>pendiente}"></core:Item>
+						<core:Item key="2" text="{i18n>error}"></core:Item>
+					</Select>
+				</VBox>
+			</HBox>
+			
+		</content>
+	</Panel>
+</core:FragmentDefinition>

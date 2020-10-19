@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Table items="{odataModel>Orders}" growing="true" growingThreshold="10">
+		<columns>
+			<Column>
+				<header>
+					<Label text="{i18n>id}"></Label>
+				</header>
+			</Column>
+			<Column>
+				<header>
+					<Label text="{i18n>mercancia}"></Label>
+				</header>
+			</Column>
+			<Column>
+				<header>
+					<Label text="{i18n>direccion}"></Label>
+				</header>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem type="Navigation" press="navToDetailOrder">
+				<cells>
+					<Label text="{odataModel>OrderID}"></Label>
+					<Label text="{odataModel>Freight}"></Label>
+					<Label text="{odataModel>ShipAddress}"></Label>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

@@ -1,0 +1,39 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"  controllerName="logali.group.MyFirstProject.controller.main" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.f">
+    <App>
+        <pages>
+            <Page showHeader="false">
+                <content>
+                    <f:FlexibleColumnLayout id="fcl"
+                         backgroundDesign="Solid" 
+                    layout="{oJsonModelConfig>/layout}">
+                        <f:beginColumnPages>
+                            <mvc:XMLView id="masterEmployeeView" viewName="logali.group.MyFirstProject.view.masterEmployees" />
+                        </f:beginColumnPages>
+                        <f:midColumnPages>
+                            <mvc:XMLView id="detailEmployeeView" viewName="logali.group.MyFirstProject.view.detailEmployee" />
+                        </f:midColumnPages>
+                        <f:endColumnPages>
+                            <Page></Page>
+                        </f:endColumnPages>
+                    </f:FlexibleColumnLayout>
+                </content>
+                <footer>
+                    <Toolbar>
+                        <Label text="{i18n>layout}:" class="sapUiSmallMargin"></Label>
+                        <Select selectedKey="{oJsonModelConfig>/layout}">
+                            <core:Item key="OneColumn" text="OneColumn" ></core:Item>
+                            <core:Item key="TwoColumnsBeginExpanded" text="TwoColumnsBeginExpanded" ></core:Item>
+                            <core:Item key="TwoColumnsMidExpanded" text="TwoColumnsMidExpanded" ></core:Item>
+                            <core:Item key="MidColumnFullScreen" text="MidColumnFullScreen" ></core:Item>
+                            <core:Item key="ThreeColumnsMidExpanded" text="ThreeColumnsMidExpanded" ></core:Item>
+                            <core:Item key="ThreeColumnsEndExpanded" text="ThreeColumnsEndExpanded" ></core:Item>
+                            <core:Item key="ThreeColumnsMidExpandedEndHidden" text="ThreeColumnsMidExpandedEndHidden" ></core:Item>
+                            <core:Item key="ThreeColumnsBeginExpandedEndHidden" text="ThreeColumnsBeginExpandedEndHidden" ></core:Item>
+                            <core:Item key="EndColumnFullScreen" text="EndColumnFullScreen" ></core:Item>
+                        </Select>
+                    </Toolbar>
+                </footer>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>
