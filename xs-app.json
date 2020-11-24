@@ -15,9 +15,8 @@
         {
             "authenticationType": "none",
             "csrfProtection": false,
-            "source": "^/NPL/(.*)$",
-            "destination": "NPL",
-            "target": "$2"
+            "source": "^/sap/opu/odata/sap/YSAPUI5_SRV_01/",
+            "destination": "logaligroupERP"
         },
         {
             "source": "^(.*)$",
